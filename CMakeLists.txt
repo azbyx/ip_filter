@@ -13,8 +13,6 @@ target_compile_options(ip_filter PRIVATE
         -Wall -Wextra -pedantic -Werror
     )
 
-install(TARGETS ip_filter RUNTIME DESTINATION bin)
-
 set(CPACK_GENERATOR DEB)
 
 set(CPACK_PACKAGE_VERSION_MAJOR "${PROJECT_VERSION_MAJOR}")
