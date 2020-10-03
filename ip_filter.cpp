@@ -88,15 +88,15 @@ int main(int argc, char const *argv[])
 
         auto printer = [](const auto& cont)
         {
-            for(auto ip_part = ip.cbegin(); ip_part != ip.cend(); ++ip_part)
+            for(auto it = cont.cbegin(); it != cont.cend(); ++it)
             {
-                if (ip_part != ip.cbegin())
+                if (it != cont.cbegin())
                     std::cout << ".";
 
-                std::cout << *ip_part;
+                std::cout << *it;
             }
             //std::copy(std::begin(cont), std::end(cont), std::experimental::make_ostream_joiner(std::cout, "."));
-            //std::cout << std::endl;
+            std::cout << std::endl;
         };
 
         for(const auto& ip : ip_pool)
