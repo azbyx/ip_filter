@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.2)
 
-project(ip_filter VERSION 0.0.0  LANGUAGES CXX)
+project(ip_filter VERSION 0.0.$TRAVIS_BUILD_NUMBER  LANGUAGES CXX)
 
 add_executable(ip_filter ip_filter.cpp)
 
