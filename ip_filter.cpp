@@ -6,7 +6,7 @@
 #include <regex>
 
 #include <algorithm>
-#include <experimental/iterator>
+//#include <experimental/iterator>
 #include <iterator>
 
 #include <fstream>//remove
@@ -85,23 +85,18 @@ int main(int argc, char const *argv[])
         std::sort(ip_pool.begin(),
                   ip_pool.end(),
                   std::greater<std::vector<int>>());
-                  /*[](auto& v1, auto& v2)
-                  {
-
-                      return !std::lexicographical_compare(v1.begin(), v1.end(), v2.begin(), v2.end());
-                  });*/
 
         auto printer = [](const auto& cont)
         {
-            /*for(auto ip_part = ip.cbegin(); ip_part != ip.cend(); ++ip_part)
+            for(auto ip_part = ip.cbegin(); ip_part != ip.cend(); ++ip_part)
             {
                 if (ip_part != ip.cbegin())
                     std::cout << ".";
 
                 std::cout << *ip_part;
-            }*/
-            std::copy(std::begin(cont), std::end(cont), std::experimental::make_ostream_joiner(std::cout, "."));
-            std::cout << std::endl;
+            }
+            //std::copy(std::begin(cont), std::end(cont), std::experimental::make_ostream_joiner(std::cout, "."));
+            //std::cout << std::endl;
         };
 
         for(const auto& ip : ip_pool)
