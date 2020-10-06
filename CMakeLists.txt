@@ -2,16 +2,16 @@ cmake_minimum_required(VERSION 3.2)
 
 project(ip_filter VERSION 0.0.$ENV{TRAVIS_BUILD_NUMBER}  LANGUAGES CXX)
 
-##add_subdirectory(
-#    "${CMAKE_CURRENT_SOURCE_DIR}/gootest"
-#    "gootest"
-#)
+add_subdirectory(
+    "${CMAKE_CURRENT_SOURCE_DIR}/gootest"
+    "gootest"
+)
 
 add_executable(main_ip_filter main.cpp)
 add_library(ip_filter ip_filter.cpp)
-##add_executable(gltest gtests.cpp)
+add_executable(gltest gtests.cpp)
 
-set_target_properties(main_ip_filter ip_filter PROPERTIES # gltest
+set_target_properties(main_ip_filter ip_filter gltest PROPERTIES
     CXX_STANDARD 17
     CXX_STANDARD_REQUIRED ON
 )
@@ -24,21 +24,23 @@ target_link_libraries(main_ip_filter PRIVATE
     ip_filter
 )
 
-##target_link_libraries(gltest
-#    gtest
-#    ip_filter
-#)
+target_link_libraries(gltest PRIVATE
+    gtest gtest_main
+)
 
 if (MSVC)
+    
+    set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+
     target_compile_options(main_ip_filter PRIVATE
             /W4
     )
     target_compile_options(ip_filter PRIVATE
             /W4
     )
-    ##target_compile_options(gltest PRIVATE
-    #        /W4
-    #)
+    target_compile_options(gltest PRIVATE
+            /W4
+    )
 else()
     target_compile_options(main_ip_filter PRIVATE
             -Wall -Wextra -pedantic -Werror
@@ -46,9 +48,9 @@ else()
     target_compile_options(ip_filter PRIVATE
             -Wall -Wextra -pedantic -Werror
     )
-    ##target_compile_options(gltest PRIVATE
-    #        -Wall -Wextra -pedantic -Werror
-    #)
+    target_compile_options(gltest PRIVATE
+            -Wall -Wextra -pedantic -Werror
+    )
 endif()
 
 install(TARGETS main_ip_filter RUNTIME DESTINATION bin)
