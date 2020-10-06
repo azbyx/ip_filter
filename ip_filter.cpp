@@ -40,12 +40,8 @@ std::vector<int> split_ip(const std::string &str)
     return r;
 }
 
-<<<<<<< HEAD
-ipv4_validate::ipv4_validate(std::string in_str) : ipv4_regex(in_str) {}
-=======
 ipv4_validate::ipv4_validate(std::string in_str)
                 : ipv4_regex(in_str) {}
->>>>>>> ce9d3b210a5d9d45bf63a8117b2216532b57facf
 
 bool ipv4_validate::operator()(const std::string& is_valid)
 {
