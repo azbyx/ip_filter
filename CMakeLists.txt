@@ -39,7 +39,7 @@ if (MSVC)
     target_compile_options(gltest PRIVATE
             /W4
     )
-else
+else()
     target_compile_options(main_ip_filter PRIVATE
             -Wall -Wextra -pedantic -Werror
     )
