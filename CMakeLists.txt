@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.2)
 project(ip_filter VERSION 0.0.$ENV{TRAVIS_BUILD_NUMBER}  LANGUAGES CXX)
 
 add_subdirectory(
-    "${CMAKE_CURRENT_SOURCE_DIR}/gootest/googltest/include"
+    "${CMAKE_CURRENT_SOURCE_DIR}/gootest"
     "gootest"
 )
 
