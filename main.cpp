@@ -1,10 +1,10 @@
+#include <cstdlib>
 #include <iostream>
 #include <string>
 #include <vector>
 #include <algorithm>
 #include <iterator>
 //#include <experimental/iterator>
-#include <fstream>//need_remove
 #include "ip_filter.h"
 
 int main(int, char const **)
@@ -12,16 +12,14 @@ int main(int, char const **)
 
     try
     {
-        std::ifstream in_file;//need_remove
-        in_file.open("D:\\ip_filter\\ip_filter.tsv");//need_remove
 
         std::vector<std::vector<int> > ip_pool;
         ipv4_validate validatorIP;
         ipv4_validate validatorTwoTabs(".*\\t.*\\t.*");
 
-        for(std::string line; std::getline(in_file, line); )//std::cin
+        for(std::string line; std::getline(std::cin, line); )
         {
-            //my validate: format in string is ".*\t.*\t.*"
+            //my validate: format an in string is ".*\t.*\t.*"
             if(validatorTwoTabs(line))
             {
                 std::vector<std::string> v = split(line);
@@ -34,11 +32,10 @@ int main(int, char const **)
             }
         }
 
-        in_file.close();//need_remove
         // TODO reverse sort
         std::sort(ip_pool.begin(), ip_pool.end(), std::greater<std::vector<int>>());
 
-        //
+        //print vector
         auto printer = [](const auto& cont)
         {
             for(auto it = cont.cbegin(); it != cont.cend(); ++it)
