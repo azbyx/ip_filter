@@ -25,7 +25,7 @@ target_link_libraries(main_ip_filter PRIVATE
 )
 
 target_link_libraries(gltest PRIVATE
-    gootest ip_filter
+    gtest gtest_main ip_filter
 )
 
 if (MSVC)
