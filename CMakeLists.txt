@@ -25,7 +25,7 @@ target_link_libraries(main_ip_filter PRIVATE
 )
 
 target_link_libraries(gltest PRIVATE
-    gtest gtest_main
+    gootest ip_filter
 )
 
 if (MSVC)
@@ -53,7 +53,7 @@ else()
     )
 endif()
 
-install(TARGETS main_ip_filter RUNTIME DESTINATION bin)
+install(TARGETS main_ip_filter gltest RUNTIME DESTINATION bin)
 
 set(CPACK_GENERATOR DEB)
 
