@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.2)
 project(ip_filter VERSION 0.0.$ENV{TRAVIS_BUILD_NUMBER}  LANGUAGES CXX)
 
 add_subdirectory(
-    "gootest"
+    ""${CMAKE_CURRENT_SOURCE_DIR}/gootest/googltest/include"
     "gootest"
 )
 
@@ -25,7 +25,7 @@ target_link_libraries(main_ip_filter PRIVATE
 )
 
 target_link_libraries(gltest PRIVATE
-    gtest gtest_main ip_filter
+    ip_filter gtest
 )
 
 if (MSVC)
@@ -65,6 +65,6 @@ set(CPACK_PACKAGE_CONTACT azbyx@inbox.ru)
 
 include(CPack)
 
-##enable_testing()
+enable_testing()
 
-##add_test(gltest gltest)
+add_test(gltest gltest)

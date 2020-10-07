@@ -1,5 +1,5 @@
-#include <gootest/gtest.h>
-#include <ip_filter.h>
+#include "ip_filter.h"
+#include <gtest/gtest.h>
 #include <vector>
 
 
@@ -7,74 +7,15 @@ TEST(ip_filter, Empty) {
 
     // Arrange
 
-    otus::List<int> list;
+    int i = 1;
 
     // Act (empty for this test)
 
     // Assert
 
-    ASSERT_EQ(list.size(), 0);
-    ASSERT_TRUE(list.empty());
+    ASSERT_EQ(i, 1);
 
 }
-
-
-
-TEST(ip_filter, PushBack) {
-
-    // Arrange
-
-    const size_t count = 10;
-    otus::List<size_t> list;
-
-
-
-    // Act
-
-    for (size_t i = 0; i < count; ++i)
-    {
-        list.push_back(i);
-    }
-
-    // Assert
-
-    ASSERT_EQ(list.size(), count);
-    ASSERT_FALSE(list.empty());
-
-}
-
-
-
-TEST(ip_filter, PopBack) {
-
-    // Arrange
-
-    const size_t count = 10;
-    otus::List<size_t> list;
-
-
-
-    for (size_t i = 0; i < count; ++i) {
-
-        list.push_back(i);
-
-    }
-
-    // Act
-
-    for (size_t i = 0; i < count; ++i)
-    {
-        list.pop_back();
-    }
-
-    // Assert
-
-    ASSERT_EQ(list.size(), 0);
-    ASSERT_TRUE(list.empty());
-
-}
-
-
 
 int main(int argc, char** argv) {
 
