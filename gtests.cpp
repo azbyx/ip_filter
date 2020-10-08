@@ -3,17 +3,55 @@
 #include <vector>
 
 
-TEST(ip_filter, Empty) {
+TEST(split_string, without_TAB) {
 
     // Arrange
-
-    int i = 1;
+    std::string str{""};
 
     // Act (empty for this test)
+    std::vector<std::string> keeper = split(str);
 
     // Assert
+    ASSERT_EQ(keeper.size(), 1);
 
-    ASSERT_EQ(i, 1);
+}
+
+TEST(split_string, one_TAB) {
+
+    // Arrange
+    std::string keeper{"1\t2"};
+
+    // Act (empty for this test)
+    std::vector<std::string> keeper = split(str);
+
+    // Assert
+    ASSERT_EQ(keeper.size(), 2);
+
+}
+
+TEST(split_string, two_TAB) {
+
+    // Arrange
+    std::string keeper{"1\t2\tnexttxt"};
+
+    // Act (empty for this test)
+    std::vector<std::string> keeper = split(str);
+
+    // Assert
+    ASSERT_EQ(keeper.size(), 3);
+
+}
+
+TEST(split_string, more_than_two_TAB) {
+
+    // Arrange
+    std::string keeper{"1\t2\tn\ne\tx\tt\nt\vx\tt"};
+
+    // Act (empty for this test)
+    std::vector<std::string> keeper = split(str);
+
+    // Assert
+    ASSERT_EQ(keeper.size(), 6);
 
 }
 
