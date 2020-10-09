@@ -4,7 +4,7 @@
 #include <vector>
 #include <algorithm>
 #include <iterator>
-//#include <experimental/iterator>
+#include <experimental/iterator>
 #include "ip_filter.h"
 
 int main(int, char const **)
@@ -38,14 +38,14 @@ int main(int, char const **)
         //print vector
         auto printer = [](const auto& cont)
         {
-            for(auto it = cont.cbegin(); it != cont.cend(); ++it)
+            /*for(auto it = cont.cbegin(); it != cont.cend(); ++it)
             {
                 if (it != cont.cbegin())
                     std::cout << ".";
 
                 std::cout << *it;
-            }
-            //std::copy(std::begin(cont), std::end(cont), std::experimental::make_ostream_joiner(std::cout, "."));
+            }*/
+            std::copy(std::begin(cont), std::end(cont), std::experimental::make_ostream_joiner(std::cout, "."));
             std::cout << std::endl;
         };
 
