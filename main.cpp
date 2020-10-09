@@ -13,27 +13,27 @@ int main(int, char const **)
     try
     {
 
-        std::vector<std::vector<int> > ip_pool;
+        std::vector<std::vector<uint32_t> > ip_pool;
         ipv4_validate validatorIP;
         ipv4_validate validatorTwoTabs(".*\\t.*\\t.*");
 
         for(std::string line; std::getline(std::cin, line); )
         {
-            //my validate: format an in string is ".*\t.*\t.*"
+            //my validate: Does the string contain exactly two TABs?
             if(validatorTwoTabs(line))
             {
                 std::vector<std::string> v = split(line);
                 //my validate Ipv4
                 if(validatorIP(v.at(0)))
                 {
-                    std::vector<int> vec_ip = split_ip(v.at(0));
+                    std::vector<uint32_t> vec_ip = split_ip(v.at(0));
                     ip_pool.push_back(vec_ip);
                 }
             }
         }
 
         // TODO reverse sort
-        std::sort(ip_pool.begin(), ip_pool.end(), std::greater<std::vector<int>>());
+        std::sort(ip_pool.begin(), ip_pool.end(), std::greater<std::vector<uint32_t>>());
 
         //print vector
         auto printer = [](const auto& cont)

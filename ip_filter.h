@@ -4,7 +4,7 @@
 #include <regex>
 
 std::vector<std::string> split(const std::string &str);
-std::vector<int> split_ip(const std::string &str);
+std::vector<uint32_t> split_ip(const std::string &str);
 struct ipv4_validate{
 
     ipv4_validate(std::string in_str = "((25[0-5]|2[0-4]\\d|[01]?\\d\\d?)\\.){3}(25[0-5]|2[0-4]\\d|[1]?\\d\\d?)");

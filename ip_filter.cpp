@@ -1,3 +1,4 @@
+#include <iostream>
 #include <string>
 #include <vector>
 #include <regex>
@@ -21,21 +22,25 @@ std::vector<std::string> split(const std::string &str)
 
     return r;
 }
-std::vector<int> split_ip(const std::string &str)
+std::vector<uint32_t> split_ip(const std::string &str)
 {
-    std::vector<int> r;
+    std::vector<uint32_t> r;
 
     std::string::size_type start = 0;
     std::string::size_type stop = str.find_first_of('.');
+    uint32_t s2i;
+
     while(stop != std::string::npos)
     {
-        r.push_back(stoi(str.substr(start, stop - start)));
+        s2i = stoi(str.substr(start, stop - start));
+        r.push_back(s2i);
 
         start = stop + 1;
         stop = str.find_first_of('.', start);
     }
 
-    r.push_back(stoi(str.substr(start)));
+    s2i = stoi(str.substr(start));
+    r.push_back(s2i);
 
     return r;
 }
