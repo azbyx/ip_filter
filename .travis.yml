@@ -4,7 +4,7 @@ before_install:
   - sudo apt-get -q update
   - sudo apt-get -y install g++-7
   - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-7 60
-  env: CC=gcc-7 && CXX=g++-7
+  env: CC=gcc-7 && CXX=g++-7 
 script:
 - cmake .
 - cmake --build .
